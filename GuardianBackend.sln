@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend", "GuardianBackend\GuardianBackend.csproj", "{0A538A43-E671-4D02-BC4C-75301E427707}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Presentation", "GuardianBackend\GuardianBackend.Presentation.csproj", "{0A538A43-E671-4D02-BC4C-75301E427707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Services", "GuardianBackend.Presentation\GuardianBackend.Services.csproj", "{4DA2A567-1BB1-4563-90E0-0DAC2956F352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Repository", "GuardianBackend.Repository\GuardianBackend.Repository.csproj", "{7DD2CC03-1958-4146-9E60-E722EB4C7F04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-GuardianBackend.Presentation", "1-GuardianBackend.Presentation", "{5E7200C7-225D-4704-B5F2-8BB816C711BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-GuardianBackend.Services", "2-GuardianBackend.Services", "{CF351CCE-48C4-4E15-9C98-B705CA2F2F37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-GuardianBackend.Repository", "3-GuardianBackend.Repository", "{244CECB5-C15C-4F50-B74B-E77F60DF6E87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-GuardianBackend.Infrastructure", "4-GuardianBackend.Infrastructure", "{E5D2AB95-3807-430D-BDE2-D64301CB34E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-GuardianBackend.Domain", "5-GuardianBackend.Domain", "{5A54FF02-534B-4755-BA33-49DB84A51D88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Infrastructure", "GuardianBackend.Infrastructure\GuardianBackend.Infrastructure.csproj", "{4783037C-FE60-48D8-9241-B59708F9A30C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Domain", "GuardianBackend.Domain\GuardianBackend.Domain.csproj", "{7C87C810-194A-48AB-9495-C1AF05096EE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +33,32 @@ Global
 		{0A538A43-E671-4D02-BC4C-75301E427707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A538A43-E671-4D02-BC4C-75301E427707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A538A43-E671-4D02-BC4C-75301E427707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4783037C-FE60-48D8-9241-B59708F9A30C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4783037C-FE60-48D8-9241-B59708F9A30C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4783037C-FE60-48D8-9241-B59708F9A30C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4783037C-FE60-48D8-9241-B59708F9A30C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C87C810-194A-48AB-9495-C1AF05096EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C87C810-194A-48AB-9495-C1AF05096EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C87C810-194A-48AB-9495-C1AF05096EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C87C810-194A-48AB-9495-C1AF05096EE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A538A43-E671-4D02-BC4C-75301E427707} = {5E7200C7-225D-4704-B5F2-8BB816C711BF}
+		{4DA2A567-1BB1-4563-90E0-0DAC2956F352} = {CF351CCE-48C4-4E15-9C98-B705CA2F2F37}
+		{7DD2CC03-1958-4146-9E60-E722EB4C7F04} = {244CECB5-C15C-4F50-B74B-E77F60DF6E87}
+		{4783037C-FE60-48D8-9241-B59708F9A30C} = {E5D2AB95-3807-430D-BDE2-D64301CB34E4}
+		{7C87C810-194A-48AB-9495-C1AF05096EE7} = {5A54FF02-534B-4755-BA33-49DB84A51D88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E7237C5-934D-43B6-A76F-92D7843870A5}
