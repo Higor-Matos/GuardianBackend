@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Presentation", "GuardianBackend\GuardianBackend.Presentation.csproj", "{0A538A43-E671-4D02-BC4C-75301E427707}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Services", "GuardianBackend.Presentation\GuardianBackend.Services.csproj", "{4DA2A567-1BB1-4563-90E0-0DAC2956F352}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Repository", "GuardianBackend.Repository\GuardianBackend.Repository.csproj", "{7DD2CC03-1958-4146-9E60-E722EB4C7F04}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-GuardianBackend.Presentation", "1-GuardianBackend.Presentation", "{5E7200C7-225D-4704-B5F2-8BB816C711BF}"
@@ -25,11 +21,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Domain", "G
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuardianBackend.Common", "GuardianBackend.Common", "{C00A7924-6D47-4C59-B38C-CE1EC9712184}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Common", "GuardianBackend.Common\GuardianBackend.Common.csproj", "{D69E7513-B4CF-4BA4-9AEF-2D21419D6A19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Common", "GuardianBackend.Common\GuardianBackend.Common.csproj", "{D69E7513-B4CF-4BA4-9AEF-2D21419D6A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuardianBackend.Test", "GuardianBackend.Teste\GuardianBackend.Test.csproj", "{D6ED47C2-8EA1-48F1-9217-C2B37FA3BCCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Test", "GuardianBackend.Teste\GuardianBackend.Test.csproj", "{D6ED47C2-8EA1-48F1-9217-C2B37FA3BCCC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuardianBackend.Test", "GuardianBackend.Test", "{140CEA17-50B5-4449-AC49-296B1E0A47F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{33322850-7A52-4C6A-8BF3-3C9A1612B6D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Services", "GuardianBackend.Services\GuardianBackend.Services.csproj", "{F38067B0-E8C9-46F2-AD9C-DEBD5F3715B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Presentation", "GuardianBackend\GuardianBackend.Presentation.csproj", "{9895364C-1E0F-4A8B-81F4-37863A99CC14}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +39,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0A538A43-E671-4D02-BC4C-75301E427707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A538A43-E671-4D02-BC4C-75301E427707}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A538A43-E671-4D02-BC4C-75301E427707}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A538A43-E671-4D02-BC4C-75301E427707}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DA2A567-1BB1-4563-90E0-0DAC2956F352}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DD2CC03-1958-4146-9E60-E722EB4C7F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,18 +59,26 @@ Global
 		{D6ED47C2-8EA1-48F1-9217-C2B37FA3BCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6ED47C2-8EA1-48F1-9217-C2B37FA3BCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6ED47C2-8EA1-48F1-9217-C2B37FA3BCCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38067B0-E8C9-46F2-AD9C-DEBD5F3715B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38067B0-E8C9-46F2-AD9C-DEBD5F3715B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38067B0-E8C9-46F2-AD9C-DEBD5F3715B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38067B0-E8C9-46F2-AD9C-DEBD5F3715B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0A538A43-E671-4D02-BC4C-75301E427707} = {5E7200C7-225D-4704-B5F2-8BB816C711BF}
-		{4DA2A567-1BB1-4563-90E0-0DAC2956F352} = {CF351CCE-48C4-4E15-9C98-B705CA2F2F37}
 		{7DD2CC03-1958-4146-9E60-E722EB4C7F04} = {244CECB5-C15C-4F50-B74B-E77F60DF6E87}
 		{4783037C-FE60-48D8-9241-B59708F9A30C} = {E5D2AB95-3807-430D-BDE2-D64301CB34E4}
 		{7C87C810-194A-48AB-9495-C1AF05096EE7} = {5A54FF02-534B-4755-BA33-49DB84A51D88}
 		{D69E7513-B4CF-4BA4-9AEF-2D21419D6A19} = {C00A7924-6D47-4C59-B38C-CE1EC9712184}
 		{D6ED47C2-8EA1-48F1-9217-C2B37FA3BCCC} = {140CEA17-50B5-4449-AC49-296B1E0A47F9}
+		{F38067B0-E8C9-46F2-AD9C-DEBD5F3715B8} = {CF351CCE-48C4-4E15-9C98-B705CA2F2F37}
+		{9895364C-1E0F-4A8B-81F4-37863A99CC14} = {5E7200C7-225D-4704-B5F2-8BB816C711BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6E7237C5-934D-43B6-A76F-92D7843870A5}
