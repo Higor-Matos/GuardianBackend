@@ -6,3 +6,41 @@ services:
     build:
       context: .
       dockerfile: GuardianBackend/Dockerfile
+    networks:
+      - elk
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.0
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=root
+      - xpack.security.enabled=true
+    ports:
+      - 9200:9200
+    networks:
+      - elk
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sSL http://localhost:9200/_cluster/health?pretty || exit 1"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=root
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+
+networks:
+  elk:
