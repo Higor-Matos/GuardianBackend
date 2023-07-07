@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Services", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianBackend.Presentation", "GuardianBackend\GuardianBackend.Presentation.csproj", "{9895364C-1E0F-4A8B-81F4-37863A99CC14}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8D29BF5F-5A5B-43AB-B081-B9C75E4AB2E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9895364C-1E0F-4A8B-81F4-37863A99CC14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D29BF5F-5A5B-43AB-B081-B9C75E4AB2E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D29BF5F-5A5B-43AB-B081-B9C75E4AB2E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D29BF5F-5A5B-43AB-B081-B9C75E4AB2E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D29BF5F-5A5B-43AB-B081-B9C75E4AB2E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

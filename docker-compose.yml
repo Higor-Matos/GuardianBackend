@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  guardianbackend.presentation:
+    image: ${DOCKER_REGISTRY-}guardianbackendpresentation
+    build:
+      context: .
+      dockerfile: GuardianBackend/Dockerfile
