@@ -1,1 +1,5 @@
 # GuardianBackend
+
+
+
+É IMPORTANTE IMPLEMENTAR OS BACKUPS DO ELASTICCC!!!!
