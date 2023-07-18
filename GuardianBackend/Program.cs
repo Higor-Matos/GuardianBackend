@@ -1,20 +1,17 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+using GuardianBackend.Presentation.Extensions;
 using NLog.Extensions.Logging;
-using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Microsoft.Extensions.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adicione os serviços ao contêiner.
+// Adicionar os serviços ao contêiner.
 builder.Services.AddControllers();
-// Saiba mais sobre a configuração do Swagger/OpenAPI em https://aka.ms/aspnetcore/swashbuckle
+// Saiba mais sobre como configurar o Swagger/OpenAPI em https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOcelot(builder.Configuration);
-
 // Configuração do NLog
 builder.Logging.ClearProviders();
 builder.Logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
@@ -22,7 +19,13 @@ builder.Logging.AddNLog();
 
 var app = builder.Build();
 
-// Configura o pipeline de solicitações HTTP.
+// Criar o logger
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+
+// Adicionar serviços na assembly
+builder.Services.AddServicesInAssembly(logger);
+
+// Configurar o pipeline de solicitação HTTP.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -35,13 +38,11 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Adicione o Ocelot ao pipeline de middleware
+// Adicionar o Ocelot ao pipeline de middlewares
 app.UseOcelot().Wait();
 
-// Cria o logger
-var logger = app.Services.GetRequiredService<ILogger<Program>>();
-logger.LogInformation("O aplicativo foi iniciado.");
+logger.LogInformation("A aplicação foi iniciada com sucesso.");
 
 app.Run();
 
-logger.LogInformation("O aplicativo está sendo encerrado.");
+logger.LogInformation("A aplicação está sendo encerrada.");
