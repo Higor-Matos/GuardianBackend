@@ -44,5 +44,3 @@ app.UseOcelot().Wait();
 logger.LogInformation("A aplicação foi iniciada com sucesso.");
 
 app.Run();
-
-logger.LogInformation("A aplicação está sendo encerrada.");
