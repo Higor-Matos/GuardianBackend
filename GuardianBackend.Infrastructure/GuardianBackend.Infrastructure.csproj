@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\GuardianBackend.Tests\GuardianBackend.Tests.csproj" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GuardianBackend.Common\GuardianBackend.Common.csproj" />
     <ProjectReference Include="..\GuardianBackend.Domain\GuardianBackend.Domain.csproj" />
   </ItemGroup>

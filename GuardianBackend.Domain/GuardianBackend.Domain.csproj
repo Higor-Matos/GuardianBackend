@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\GuardianBackend.Tests\GuardianBackend.Tests.csproj" />
     <ProjectReference Include="..\GuardianBackend.Common\GuardianBackend.Common.csproj" />
   </ItemGroup>
 
