@@ -34,7 +34,7 @@ namespace GuardianBackend.Infrastructure.Extensions
 
             foreach (var assembly in assemblies)
             {
-                logger.LogInformation($"Analisando assembly: {assembly.FullName}");
+                logger.LogInformation("Analisando assembly: {AssemblyName}", assembly.FullName);
             }
 
             return assemblies;
@@ -51,7 +51,7 @@ namespace GuardianBackend.Infrastructure.Extensions
 
         private static void RegisterServiceForType(IServiceCollection services, Type type, ILogger logger)
         {
-            logger.LogInformation($"Registrando serviço para o tipo: {type.FullName}");
+            logger.LogInformation("Registrando serviço para o tipo: {TypeName}", type.FullName);
 
             var interfaces = type.GetInterfaces();
             foreach (Type @interface in interfaces)
@@ -59,7 +59,7 @@ namespace GuardianBackend.Infrastructure.Extensions
                 if (!@interface.IsAbstract)
                 {
                     services.AddScoped(@interface, type);
-                    logger.LogInformation($"Serviço registrado: {type.FullName} como {@interface.FullName}");
+                    logger.LogInformation("Serviço registrado: {ImplementationType} como {InterfaceType}", type.FullName, @interface.FullName);
                 }
             }
         }
