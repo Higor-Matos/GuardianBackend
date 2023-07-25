@@ -1,0 +1,23 @@
+# Use a imagem SDK do .NET para compilar o projeto de teste
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+WORKDIR /app
+
+# Copie csproj do projeto de teste e restaure dependências
+COPY ["GuardianBackend.Test/GuardianBackend.Test.csproj", "GuardianBackend.Test/"]
+RUN dotnet restore "GuardianBackend.Test/GuardianBackend.Test.csproj"
+
+# Copie todo o diretório raiz (isso inclui todos os projetos) e construa o projeto de teste
+COPY . ./
+RUN dotnet restore "GuardianBackend.Test/GuardianBackend.Test.csproj"
+RUN dotnet publish "GuardianBackend.Test/GuardianBackend.Test.csproj" -c Release -o out --self-contained false -r linux-x64
+
+# Mude para uma imagem SDK para executar os testes
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS testrunner
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "vstest", "GuardianBackend.Test.dll"]
+
+# Comando para executar os testes
+ENTRYPOINT ["dotnet", "test", "/app/GuardianBackend.Test.dll", "--logger:trx"]
+
+
