@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\GuardianBackend.Common\GuardianBackend.Common.csproj" />
     <ProjectReference Include="..\GuardianBackend.Repository\GuardianBackend.Repository.csproj" />
   </ItemGroup>
 
