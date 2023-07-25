@@ -46,9 +46,32 @@ services:
     networks:
       - elk
 
+  mysql:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: guardian_db
+      MYSQL_USER: guardian_user
+      MYSQL_PASSWORD: root 
+    volumes:
+      - mysqldata:/var/lib/mysql
+    networks:
+      - elk
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - elk
+    depends_on:
+      - mysql
+
 volumes:
   esdata:
   kbdata:
+  mysqldata:
 
 networks:
   elk:
