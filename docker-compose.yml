@@ -1,6 +1,18 @@
 version: '3.4'
 
 services:
+  ocelot:
+    image: ${DOCKER_REGISTRY-}ocelotgateway
+    build:
+      context: .
+      dockerfile: GuardianBackend/Dockerfile
+    networks:
+      - elk
+    ports:
+      - 80:80
+    depends_on:
+      - guardianbackend.presentation
+
   guardianbackend.presentation:
     image: ${DOCKER_REGISTRY-}guardianbackendpresentation
     build:
