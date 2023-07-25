@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GuardianBackend\GuardianBackend.Presentation.csproj" />
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GuardianBackend.Repository\GuardianBackend.Repository.csproj" />
   </ItemGroup>
 
 </Project>
