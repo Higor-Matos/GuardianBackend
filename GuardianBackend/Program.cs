@@ -1,6 +1,6 @@
 using GuardianBackend.Infrastructure.Middlewares;
 using GuardianBackend.Infrastructure.Swagger;
-using GuardianBackend.Presentation.Extensions;
+using GuardianBackend.Infrastructure.Extensions;
 using NLog.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
