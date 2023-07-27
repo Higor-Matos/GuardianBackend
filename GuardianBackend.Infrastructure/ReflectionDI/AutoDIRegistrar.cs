@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using GuardianBackend.Common.Attributes;
 using Microsoft.Extensions.DependencyInjection;
-using GuardianBackend.Common.Attributes;
+using System.Reflection;
 
 namespace GuardianBackend.Infrastructure.ReflectionDI
 {
@@ -10,15 +8,13 @@ namespace GuardianBackend.Infrastructure.ReflectionDI
     {
         public static void RegisterServices(IServiceCollection services, Assembly assembly)
         {
-            // Obter todos os tipos com o atributo AutoDI
             var typesWithAutoDI = assembly.GetTypes()
-                                          .Where(t => t.GetCustomAttributes(typeof(AutoDIAttribute), false).Length > 0)
+                                          .Where(t => t.GetCustomAttributes(typeof(AutoDIAttribute), false).Any())
                                           .ToArray();
 
             foreach (var type in typesWithAutoDI)
             {
-                // Para cada tipo, obtenha a implementação correspondente e adicione aos serviços
-                var implementation = assembly.GetTypes().FirstOrDefault(t => type.IsAssignableFrom(t) && !t.IsInterface);
+                var implementation = assembly.GetTypes().ToList().Find(t => type.IsAssignableFrom(t) && !t.IsInterface);
                 if (implementation != null)
                 {
                     services.AddScoped(type, implementation);

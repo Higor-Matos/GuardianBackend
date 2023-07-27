@@ -1,4 +1,5 @@
 ﻿using GuardianBackend.Common.Attributes;
+using GuardianBackend.Infrastructure.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
@@ -7,7 +8,7 @@ namespace GuardianBackend.Infrastructure.ReflectionDI.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddAutoDI(this IServiceCollection services, ILogger logger, params Assembly[] assemblies)
+        public static IServiceCollection AddAutoDI(this IServiceCollection services, ILogger<LoggingAnchor> logger, params Assembly[] assemblies)
         {
             foreach (var assembly in assemblies)
             {
@@ -18,7 +19,7 @@ namespace GuardianBackend.Infrastructure.ReflectionDI.Extensions
                 foreach (var type in typesWithAutoDI)
                 {
                     logger.LogInformation("Procurando implementação para: {InterfaceName}", type.FullName);
-                    Type implementation = FindImplementationForType(type, assemblies);
+                    Type? implementation = FindImplementationForType(type, assemblies);
                     if (implementation != null)
                     {
                         logger.LogInformation("Encontrada implementação {ImplementationName} para {InterfaceName}", implementation.FullName, type.FullName);
@@ -33,11 +34,11 @@ namespace GuardianBackend.Infrastructure.ReflectionDI.Extensions
             return services;
         }
 
-        private static Type FindImplementationForType(Type type, Assembly[] assemblies)
+        private static Type? FindImplementationForType(Type type, Assembly[] assemblies)
         {
             foreach (var assembly in assemblies)
             {
-                var implementation = assembly.GetTypes().FirstOrDefault(t => !t.IsInterface && type.IsAssignableFrom(t));
+                var implementation = assembly.GetTypes().ToList().Find(t => !t.IsInterface && type.IsAssignableFrom(t));
                 if (implementation != null)
                     return implementation;
             }

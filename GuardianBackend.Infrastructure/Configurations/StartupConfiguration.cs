@@ -15,20 +15,23 @@ using System.Reflection;
 
 namespace GuardianBackend.Infrastructure.Configurations
 {
-    public class StartupConfiguration
+    public static class StartupConfiguration
     {
         public static void ConfigureServices(WebApplicationBuilder builder)
         {
-            var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<StartupConfiguration>>();
+            builder.Services.AddLogging();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+            var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<LoggingAnchor>>();
             var assemblies = new[] {
                 Assembly.Load("GuardianBackend.Domain"),
                 Assembly.Load("GuardianBackend.Services"),
                 Assembly.Load("GuardianBackend.Repository")
             };
-            builder.Services.AddAutoDI(logger, assemblies); 
+            builder.Services.AddAutoDI(logger, assemblies);
         }
+
+
 
         public static void ConfigureLogging(WebApplicationBuilder builder)
         {
