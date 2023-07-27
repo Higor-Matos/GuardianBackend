@@ -1,5 +1,9 @@
-﻿namespace GuardianBackend.Common
+﻿using System;
+
+namespace GuardianBackend.Common.Attributes
 {
-    [AttributeUsage(AttributeTargets.Interface)]
-    public class AutoDIAttribute : Attribute { }
+    [AttributeUsage(AttributeTargets.Interface, Inherited = false)]
+    public class AutoDIAttribute : Attribute
+    {
+    }
 }
