@@ -1,12 +1,14 @@
 ﻿using GuardianBackend.Infrastructure.Data;
 using GuardianBackend.Infrastructure.Middlewares;
 using GuardianBackend.Infrastructure.ReflectionDI.Extensions;
+using GuardianBackend.Infrastructure.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using NLog.Extensions.Logging;
 using Ocelot.DependencyInjection;
@@ -22,16 +24,17 @@ namespace GuardianBackend.Infrastructure.Configurations
             builder.Services.AddLogging();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.Configure();
+
             var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<LoggingAnchor>>();
-            var assemblies = new[] {
+            var assemblies = new[]
+            {
                 Assembly.Load("GuardianBackend.Domain"),
                 Assembly.Load("GuardianBackend.Services"),
                 Assembly.Load("GuardianBackend.Repository")
             };
             builder.Services.AddAutoDI(logger, assemblies);
         }
-
-
 
         public static void ConfigureLogging(WebApplicationBuilder builder)
         {
@@ -58,7 +61,11 @@ namespace GuardianBackend.Infrastructure.Configurations
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                // app.UseSwaggerUI(); // Commented out until we resolve the issue
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GuardianBackend API v1");
+                    c.RoutePrefix = "swagger";
+                });
             }
             else
             {
