@@ -1,6 +1,6 @@
 ﻿using GuardianBackend.Infrastructure.Data;
-using GuardianBackend.Infrastructure.ReflectionDI;
 using GuardianBackend.Infrastructure.Middlewares;
+using GuardianBackend.Infrastructure.ReflectionDI.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,8 +12,6 @@ using NLog.Extensions.Logging;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using System.Reflection;
-using GuardianBackend.Infrastructure.ReflectionDI.Extensions;
-using GuardianBackend.Domain.Interfaces;
 
 namespace GuardianBackend.Infrastructure.Configurations
 {
@@ -21,28 +19,16 @@ namespace GuardianBackend.Infrastructure.Configurations
     {
         public static void ConfigureServices(WebApplicationBuilder builder)
         {
+            var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<StartupConfiguration>>();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
-
-            var logger = builder.Services.BuildServiceProvider().GetRequiredService<ILogger<StartupConfiguration>>();
-
-            var domainAssembly = Assembly.Load("GuardianBackend.Domain");
-            foreach (var type in domainAssembly.GetTypes())
-            {
-                logger.LogInformation("Tipo encontrado: {TypeName}", type.FullName);
-            }
-
             var assemblies = new[] {
                 Assembly.Load("GuardianBackend.Domain"),
                 Assembly.Load("GuardianBackend.Services"),
                 Assembly.Load("GuardianBackend.Repository")
             };
-
-            builder.Services.AddAutoDI(logger, assemblies);
-
-            // builder.Services.Configure(); // Commented out until we know the arguments
+            builder.Services.AddAutoDI(logger, assemblies); 
         }
-
 
         public static void ConfigureLogging(WebApplicationBuilder builder)
         {
