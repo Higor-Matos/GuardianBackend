@@ -39,9 +39,17 @@ namespace GuardianBackend.Infrastructure.Configurations
         public static void ConfigureLogging(WebApplicationBuilder builder)
         {
             builder.Logging.ClearProviders();
-            builder.Logging.SetMinimumLevel(LogLevel.Trace);
+            if (builder.Environment.IsDevelopment())
+            {
+                builder.Logging.SetMinimumLevel(LogLevel.Trace);
+            }
+            else
+            {
+                builder.Logging.SetMinimumLevel(LogLevel.Information);
+            }
             builder.Logging.AddNLog();
         }
+
 
         public static void ConfigureDatabase(WebApplicationBuilder builder)
         {
