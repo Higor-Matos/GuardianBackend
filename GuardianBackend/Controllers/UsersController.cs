@@ -1,5 +1,4 @@
 ﻿using GuardianBackend.Domain.Interfaces;
-using GuardianBackend.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GuardianBackend.Presentation.Controllers
