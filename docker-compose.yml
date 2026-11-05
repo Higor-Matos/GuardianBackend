@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: GuardianBackend/Dockerfile
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:?ELASTIC_PASSWORD is required}
+      - ConnectionStrings__DefaultConnection=server=mysql;database=guardian_db;user=guardian_user;password=${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}
     networks:
       - elk
     ports:
@@ -18,6 +21,9 @@ services:
     build:
       context: .
       dockerfile: GuardianBackend/Dockerfile
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:?ELASTIC_PASSWORD is required}
+      - ConnectionStrings__DefaultConnection=server=mysql;database=guardian_db;user=guardian_user;password=${MYSQL_PASSWORD:?MYSQL_PASSWORD is required}
     networks:
       - elk
     depends_on:
